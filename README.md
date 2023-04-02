@@ -44,6 +44,16 @@ Caso necessite criar uma nova, pode-se fazer por um terminal linux.
 
 ## Requisitos no linux:
 ### Configurar o NFS entregue;
+1. Navegue até o serviço EFS
+2. Clique em "Create file system"
+3. Atribua um nome, caso queira, e clique em "Create"
+4. Clique no ID do sistema de arquivos ao qual deseja criar um ponto de montagem.
+5. Na guia "Access points", clique no botão "Create access point", defina um nome, caso deseje, e clique em "Create access point".
+6. Na guia "Network", clique em "Manage", e atribua o security group criado anteriormente às subnets disponíveis.
+7. 
+
+
+
 
 
 Criar um diretorio dentro do filesystem do NFS com
