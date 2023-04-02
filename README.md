@@ -42,6 +42,8 @@ Caso necessite criar uma nova, pode-se fazer por um terminal linux.
 5. Clique em "Save rules".
 
 
+
+
 ## Requisitos no linux:
 ### Configurar o NFS entregue;
 1. Navegue até o serviço EFS
@@ -50,26 +52,25 @@ Caso necessite criar uma nova, pode-se fazer por um terminal linux.
 4. Clique no ID do sistema de arquivos ao qual deseja criar um ponto de montagem.
 5. Na guia "Access points", clique no botão "Create access point", defina um nome, caso deseje, e clique em "Create access point".
 6. Na guia "Network", clique em "Manage", e atribua o security group criado anteriormente às subnets disponíveis.
-7. 
+7. Com tudo configurado, deve-se anotar o "DNS name" do file system
+8. Ao logar à instância por meio de ssh, deve-se criar o diretório /mnt/nfs
+9. Depois deve-se montar o file system, por meio do comando ``` sudo mount -t nfs4 <DNS_Name>:/ /mnt/nfs ```
 
 
+#### Criar um diretorio dentro do filesystem do NFS com seu nome;
+Após a montagem, deve-se usar o comando ```sudo mkdir /mnt/nfs/<seu_nome>```
 
 
+### Subir um apache no servidor - o apache deve estar online e rodando;
+1. Logado na instância, deve-se atualizar o pacote do sistema: ```sudo yum update -y```
+2. Instale o servidor web Apache usando o seguinte comando: ```sudo yum install httpd -y```
+3. Inicie o Apache usando o seguinte comando: ```sudo systemctl start httpd```
+4. Verifique se o Apache está em execução usando o seguinte comando: ```sudo systemctl status httpd```
+5. Para garantir que o Apache seja iniciado automaticamente na inicialização do sistema, use o seguinte comando: ```sudo systemctl enable httpd```
 
-Criar um diretorio dentro do filesystem do NFS com
-seu nome;
-Subir um apache no servidor - o apache deve estar
-online e rodando;
-Criar um script que valide se o serviço esta online e
-envie o resultado da validação para o seu diretorio no
-nfs;
-O script deve conter - Data HORA + nome do serviço
-+ Status + mensagem personalizada de ONLINE ou
-offline;
-O script deve gerar 2 arquivos de saida: 1 para o
-serviço online e 1 para o serviço OFFLINE;
-Preparar a execução automatizada do script a cada 5
-minutos.
-Fazer o versionamento da atividade;
-Fazer a documentação explicando o processo de
-instalação do Linux. 
+
+#### Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs;
+##### O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline;
+##### O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+##### Preparar a execução automatizada do script a cada 5 minutos.
+
