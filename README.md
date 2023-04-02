@@ -1,8 +1,18 @@
 # praticaAWS
 Atividade prática de AWS para Compass
 
-### Criar 1 instância EC2 com o sistema operacional
-### Amazon Linux 2 (Família t3.small, 16 GB SSD);
+### Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD);
+1. Uma vez logado no console web do serviço EC2, clique em Launch Instances
+2. Informe a tag nome da instância
+3. Na seção AMI, selecione Amazon Linux 2 AMI
+4. Na seção Instance type, selecione t3.small
+5. Em Key pair, deve-se criar uma nova chave
+  1. Defina o nome
+  2. tipo RSA
+  3. Format .pem
+  4. Deve-se salvar a chave privada (a pública fica salva na AWS)
+6. Na seção Network settings, em Firewall, deve-se criar um novo security group, e pode-se inicialmente deixar marcado para permitir o tráfego SSH
+7. 
 
 ## Gerar uma chave pública para acesso ao ambiente;
 
