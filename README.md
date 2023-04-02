@@ -1,7 +1,7 @@
 # praticaAWS
 Atividade prática de AWS para Compass
 
-##Gerar uma chave pública para acesso ao ambiente;
+## Gerar uma chave pública para acesso ao ambiente;
 
 
 Criar 1 instância EC2 com o sistema operacional
