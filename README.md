@@ -70,6 +70,7 @@ Após a montagem, deve-se usar o comando ```sudo mkdir /mnt/nfs/<seu_nome>```
 
 
 #### Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs; O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline; O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+Deve ser criado o arquivo check_apache.sh, com o seguinte código:
 ``` Bash
 #!/bin/bash
 
@@ -86,8 +87,9 @@ else
   FILENAME="apache_offline.txt"
 fi
 
-echo "$DATE $SERVICE $STATUS - $MESSAGE" | sudo tee /mnt/efs/$FILENAME
+echo "$DATE $SERVICE $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
 ```
+
 
 ##### Preparar a execução automatizada do script a cada 5 minutos.
 
