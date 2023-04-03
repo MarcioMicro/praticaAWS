@@ -77,7 +77,6 @@ Deve ser criado o arquivo check_apache.sh, com o seguinte código:
 export TZ=America/Sao_Paulo
 
 DATE=$(date '+%d-%m-%Y %H:%M:%S')
-SERVICE='Apache'
 
 if systemctl is-active --quiet httpd; then
 	STATUS="Online"
@@ -89,7 +88,7 @@ else
 	FILENAME="apache_offline.txt"
 fi
 
-echo "$DATE $SERVICE $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
+echo "$DATE httpd $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
 ```
 
 
