@@ -69,8 +69,25 @@ Após a montagem, deve-se usar o comando ```sudo mkdir /mnt/nfs/<seu_nome>```
 5. Para garantir que o Apache seja iniciado automaticamente na inicialização do sistema, use o seguinte comando: ```sudo systemctl enable httpd```
 
 
-#### Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs;
-##### O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline;
-##### O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+#### Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs; O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline; O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+``` Bash
+#!/bin/bash
+
+DATE=$(date '+%d-%m-%Y %H:%M:%S')
+SERVICE="Apache"
+
+if systemctl is-active --quiet httpd; then
+  STATUS="Online"
+  MESSAGE="O serviço Apache está funcionando normalmente."
+  FILENAME="apache_online.txt"
+else
+  STATUS="Offline"
+  MESSAGE="O serviço Apache não está funcionando."
+  FILENAME="apache_offline.txt"
+fi
+
+echo "$DATE $SERVICE $STATUS - $MESSAGE" | sudo tee /mnt/efs/$FILENAME
+```
+
 ##### Preparar a execução automatizada do script a cada 5 minutos.
 
