@@ -74,17 +74,19 @@ Deve ser criado o arquivo check_apache.sh, com o seguinte código:
 ``` Bash
 #!/bin/bash
 
+export TZ=America/Sao_Paulo
+
 DATE=$(date '+%d-%m-%Y %H:%M:%S')
-SERVICE="Apache"
+SERVICE='Apache'
 
 if systemctl is-active --quiet httpd; then
-  STATUS="Online"
-  MESSAGE="O serviço Apache está funcionando normalmente."
-  FILENAME="apache_online.txt"
+	STATUS="Online"
+	MESSAGE="O serviço Apache está funcionando normalmente."
+	FILENAME="apache_online.txt"
 else
-  STATUS="Offline"
-  MESSAGE="O serviço Apache não está funcionando."
-  FILENAME="apache_offline.txt"
+	STATUS="Offline"
+	MESSAGE="O serviço Apache não está funcionando normalmente."
+	FILENAME="apache_offline.txt"
 fi
 
 echo "$DATE $SERVICE $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
