@@ -112,4 +112,5 @@ Opcionalmente, pode-se criar um html simples para testar o serviço do Apache:
 </html>
 ```
 O arquivo deve ser salvo no diretório /var/www/html.
-Ao abrir o endereço da instância no navegador deve ser inserido o ```/index.html```
+
+Seguindo todos os passos, as atividades propostas estarão devidamente configuradas.
