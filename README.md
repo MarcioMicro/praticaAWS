@@ -114,3 +114,5 @@ Opcionalmente, pode-se criar um html simples para testar o serviço do Apache:
 O arquivo deve ser salvo no diretório /var/www/html.
 
 Seguindo todos os passos, as atividades propostas estarão devidamente configuradas.
+
+A comunicação por ssh foi feita pelo Oracle Linux 9.1, em máquina virtual.
