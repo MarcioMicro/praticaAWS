@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export TZ=America/Sao_Paulo
+
 DATE=$(date '+%d-%m-%Y %H:%M:%S')
 SERVICE='Apache'
 
