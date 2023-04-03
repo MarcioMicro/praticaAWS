@@ -1,0 +1,2 @@
+02-04-2023 22:17:26 httpd Online - O serviço Apache está funcionando normalmente.
+02-04-2023 22:17:33 httpd Online - O serviço Apache está funcionando normalmente.

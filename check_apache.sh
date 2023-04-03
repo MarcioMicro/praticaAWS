@@ -14,4 +14,4 @@ else
 	FILENAME="apache_offline.txt"
 fi
 
-echo "$DATE httpd $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
+echo "$DATE httpd $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/marcio/$FILENAME
