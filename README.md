@@ -1,5 +1,4 @@
-# praticaAWS
-Atividade prática de AWS para Compass
+# Atividade prática de AWS
 
 ### Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD);
 1. Antes de configurar a instância, deve-se verificar as configuração de VPC, subnets e internet gateway
@@ -55,6 +54,8 @@ Caso necessite criar uma nova, pode-se fazer por um terminal linux.
 7. Com tudo configurado, deve-se anotar o "DNS name" do file system
 8. Ao logar à instância por meio de ssh, deve-se criar o diretório /mnt/nfs
 9. Depois deve-se montar o file system, por meio do comando ``` sudo mount -t nfs4 <DNS_Name>:/ /mnt/nfs ```
+10. Para automatizar a montagem, deve-se instalar o driver do Amazon EFS: ```sudo yum install amazon-efs-utils -y```
+11. Depois, deve-se editar o arquivo /etc/fstab, inserindo a seguinte linha: ```<DNS_Name>:/ /mnt/nfs efs defaults,_netdev 0 0```
 
 
 #### Criar um diretorio dentro do filesystem do NFS com seu nome;
@@ -67,6 +68,7 @@ Após a montagem, deve-se usar o comando ```sudo mkdir /mnt/nfs/<seu_nome>```
 3. Inicie o Apache usando o seguinte comando: ```sudo systemctl start httpd```
 4. Verifique se o Apache está em execução usando o seguinte comando: ```sudo systemctl status httpd```
 5. Para garantir que o Apache seja iniciado automaticamente na inicialização do sistema, use o seguinte comando: ```sudo systemctl enable httpd```
+6. Deve-se instalar o git para fazer o versionamento da atividade no repositório do GitHub, com o comando: ```sudo yum install git -y```
 
 
 #### Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs; O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline; O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
@@ -93,4 +95,21 @@ echo "$DATE httpd $STATUS - $MESSAGE" | sudo tee -a /mnt/nfs/$FILENAME
 
 
 ##### Preparar a execução automatizada do script a cada 5 minutos.
+1. Para automatizar a execução do script, deve ser usado o comando ```crontab -e```
+2. Ao editar o arquivo, deve ser inserida a seguinte linha: ```*/5 * * * * /<caminho_do_script>/script.sh```
 
+Opcionalmente, pode-se criar um html simples para testar o serviço do Apache:
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de Teste Apache</title>
+</head>
+<body>
+    <h1>Teste Apache</h1>
+    <p>Se você estiver vendo esta página, o servidor Apache está funcionando corretamente.</p>
+</body>
+</html>
+```
+O arquivo deve ser salvo no diretório /var/www/html.
+Ao abrir o endereço da instância no navegador deve ser inserido o ```/index.html```
