@@ -1,0 +1,5 @@
+03-04-2023 11:42:11 httpd Offline - O serviço Apache não está funcionando normalmente.
+03-04-2023 11:42:13 httpd Offline - O serviço Apache não está funcionando normalmente.
+03-04-2023 11:45:01 httpd Offline - O serviço Apache não está funcionando normalmente.
+03-04-2023 11:50:01 httpd Offline - O serviço Apache não está funcionando normalmente.
+03-04-2023 11:55:01 httpd Offline - O serviço Apache não está funcionando normalmente.
